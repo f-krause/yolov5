@@ -76,6 +76,12 @@ def is_colab():
     return 'google.colab' in sys.modules
 
 
+def is_notebook():
+    # Is environment a Jupyter notebook? Verified on Colab, Jupyterlab, Kaggle, Paperspace
+    ipython_type = str(type(IPython.get_ipython()))
+    return 'colab' in ipython_type or 'zmqshell' in ipython_type
+
+
 def is_jupyter():
     """
     Check if the current script is running inside a Jupyter Notebook.
